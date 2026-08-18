@@ -75,7 +75,10 @@ for epoch in range(5000):
 
     if epoch % 100 == 0:
         print(epoch, loss.item())
+model.eval()
 
+with torch.no_grad():
+    predictions = model(X_test_tensor)
 with torch.no_grad():
     predictions = model(X_test_tensor)
 
@@ -102,5 +105,6 @@ with torch.no_grad():
     new_prediction = model(new_data)
 
 print("Predicted Productivity:", new_prediction.item())
+print("Final Loss:", loss.item())
          
  
