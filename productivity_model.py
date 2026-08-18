@@ -106,5 +106,18 @@ with torch.no_grad():
 
 print("Predicted Productivity:", new_prediction.item())
 print("Final Loss:", loss.item())
+study_hours = float(input("Enter study hours: "))
+sleep_hours = float(input("Enter sleep hours: "))
+screen_time = float(input("Enter screen time: "))
+breaks = float(input("Enter breaks: "))
+user_input = torch.tensor(
+    [[study_hours, sleep_hours, screen_time, breaks]],
+    dtype=torch.float32
+)
+
+with torch.no_grad():
+    prediction = model(user_input)
+
+print("Predicted Productivity:", prediction.item())
          
  
